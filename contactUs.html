@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="contactMain">
+        <h1>Contact Us</h1>
+        <br>
+        <form action="result.html" method="get" name="formUser" onsubmit="return contactUs()">
+            <label>Nome: <br>
+                <input type="text" name="nomeUsuario" required>
+            </label>
+            <br>
+            <label>Email: <br>
+                <input type="email" name="email" required>
+            </label>
+            <label>Enter your complaint or suggestion<br>
+                <textarea name="submit" required></textarea>
+            </label>
+            <br>
+            <button type="submit" name="submeter">Submit</button>
+        </form>
+    </main>
+
+    <script>
+        function contactUs() {
+            const nomeInput = document.querySelector('input[name="nomeUsuario"]');
+            const emailInput = document.querySelector('input[name="email"]');
+            const submitInput = document.querySelector('textarea[name="submit"]');
+
+            const nome = nomeInput.value;
+            const email = emailInput.value;
+            const submit = submitInput.value;
+
+            const url = `result.html?nome=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&submit=${encodeURIComponent(submit)}`;
+
+            window.location.href = url;
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
+</body>
+</html>

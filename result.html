@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Result</title>
+</head>
+<body>
+    <main class="resultMain">
+        <h1>Result</h1>
+        <br>
+        <div id="resultado"></div>
+        <br>
+        <a href="index.html"><button><img src="/imgs/casa.png" class="casa-img">  Voltar para início</button></a>
+    </main>
+
+    <script> 
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        const nome = getParameterByName('nome');
+        const email = getParameterByName('email');
+        const submit = getParameterByName('submit');
+
+        if (nome && email && submit) { 
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `<b>Submissão enviada:</b><br><br><b>Nome:</b> ${nome}<br><b>Email:</b> ${email} <br><b>Submissão:</b> ${submit}<br><b>`;
+        }  
+    </script>
+</body>
+</html>
